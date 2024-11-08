@@ -39,7 +39,11 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.manage.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;git-widget-placeholder&quot;: &quot;Rebasing main&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;Rebasing develop&quot;,
+>>>>>>> develop
     &quot;last_opened_file_path&quot;: &quot;C:/telegram_bot/pythonProject/manage.py&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
