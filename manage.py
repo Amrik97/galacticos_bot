@@ -16,7 +16,7 @@ import time
 redis_client = RedisClient()
 
 
-bot = telebot.TeleBot('7378047405:AAF2aqD8eXNZRjn1Uem7chAoJolT-taPuj0')
+bot = telebot.TeleBot('7867436867:AAHv72W1Rh2IMuc526hqCkLjsWpNW0doPgs')
 
 
 channel_username = "-1002353491202"
