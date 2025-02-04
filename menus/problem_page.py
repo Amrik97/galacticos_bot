@@ -138,4 +138,4 @@ def get_contact(message, lang_code, bot, selected_complaint):
     # Update the decision status
     redis_client.set_value(f"user:{user_id}:decision", "sent")
 
-    bot.send_message(channel_username, complaint_message, reply_markup=types.ReplyKeyboardRemove())
+    bot.send_message(channel_username, complaint_message, reply_markup=None)
