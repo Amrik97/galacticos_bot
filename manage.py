@@ -14,7 +14,7 @@ import time
 
 
 redis_client = RedisClient()
-#real job api
+#real job apir
 bot = telebot.TeleBot('7867436867:AAHv72W1Rh2IMuc526hqCkLjsWpNW0doPgs')
 #test
 #bot = telebot.TeleBot('7090989975:AAF6jSPBpTwb4-hODXC3bo5bQaaRIj9Lmtw')
