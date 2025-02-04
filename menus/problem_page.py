@@ -128,7 +128,7 @@ def get_contact(message, lang_code, bot, selected_complaint):
     # )
 
     # Send the complete complaint message to the channel
-    channel_username = "-1002385224047"
+    channel_username = "-1002353491202"
     complaint_message = (
         f"Пользователь @{message.from_user.username} отправил контакт: {redis_client.get_value(f'user:{user_id}:contact')}. "
         f"Проблема: {selected_complaint}. "
