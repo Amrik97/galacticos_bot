@@ -15,14 +15,14 @@ import time
 
 redis_client = RedisClient()
 #real job api
-#bot = telebot.TeleBot('7867436867:AAHv72W1Rh2IMuc526hqCkLjsWpNW0doPgs')
+bot = telebot.TeleBot('7867436867:AAHv72W1Rh2IMuc526hqCkLjsWpNW0doPgs')
 #test
-bot = telebot.TeleBot('7090989975:AAF6jSPBpTwb4-hODXC3bo5bQaaRIj9Lmtw')
+#bot = telebot.TeleBot('7090989975:AAF6jSPBpTwb4-hODXC3bo5bQaaRIj9Lmtw')
 
 #real job id
-#channel_username = "-1002353491202"
+channel_username = "-1002353491202"
 #test
-channel_username = "-1002385224047"
+#channel_username = "-1002385224047"
 channel_info = bot.get_chat(channel_username)
 
 #if users do not want to text - only click button
