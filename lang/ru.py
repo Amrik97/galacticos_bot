@@ -24,7 +24,7 @@ translations = {
 
 #
     'back_button': '/Назад',
-    'restart_button': 'Заново',
+    'restart_button': '/Заново',
     'button_1': 'Проблемы с PS4',
     'button_2': 'Проблемы с PS5',
     'button_3': 'Вопросы доставки',
