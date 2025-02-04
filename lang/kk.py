@@ -22,7 +22,7 @@ translations = {
 
 #
     'back_button': '/Артқа',
-    'restart_button': 'Басынан',
+    'restart_button': '/Басынан',
     'button_1': 'PS4-пен проблема бар',
     'button_2': 'PS5-пен проблема бар',
     'button_3': 'Жеткізу бойынша сұрақтар',
