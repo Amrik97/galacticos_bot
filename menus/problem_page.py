@@ -3,6 +3,7 @@ from lang.kk import translations as kk
 from lang.ru import translations as ru
 from utils.redis_client_py import RedisClient
 
+
 redis_client = RedisClient()
 
 user_languages = {}
@@ -88,15 +89,21 @@ def get_contact(message, lang_code, bot, selected_complaint):
         contact_text = message.contact.phone_number
         redis_client.set_value(f"user:{user_id}:contact", contact_text)
 
-        # Prompt the user to choose a convenient call-back time
-        time_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        time_options = [language_pack['time_1'], language_pack['time_2'], language_pack['time_3'],
-                        language_pack['time_4'], language_pack['time_5']]
-        for option in time_options:
-            time_markup.add(option)
+        bot.send_message(
+            message.chat.id,
+            language_pack['call_time_confirm'],  # Или другое сообщение
+            reply_markup=types.ReplyKeyboardRemove()
+        )
 
-        bot.send_message(message.chat.id, language_pack['choose_call_time'], reply_markup=time_markup)
-        bot.register_next_step_handler(message, get_call_time, lang_code, bot, selected_complaint)
+        # Prompt the user to choose a convenient call-back time
+        # time_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        # time_options = [language_pack['time_1'], language_pack['time_2'], language_pack['time_3'],
+        #                 language_pack['time_4'], language_pack['time_5']]
+        # for option in time_options:
+        #     time_markup.add(option)
+
+        # bot.send_message(message.chat.id, language_pack['choose_call_time'],) reply_markup=time_markup)
+        bot.register_next_step_handler(message, lang_code, bot, selected_complaint)
 
     elif decision == "sent":
         bot.send_message(message.chat.id, language_pack['you_sent'], reply_markup=types.ReplyKeyboardRemove())
@@ -105,29 +112,30 @@ def get_contact(message, lang_code, bot, selected_complaint):
                          reply_markup=types.ReplyKeyboardRemove())
 
 
-def get_call_time(message, lang_code, bot, selected_complaint):
-    user_id = message.from_user.id
-    language_pack = kk if lang_code == 'kk' else ru
-
-    # Retrieve and store the selected time in Redis
-    selected_time = message.text
-    redis_client.set_value(f"user:{user_id}:call_time", selected_time)
-
+# def get_call_time(message, lang_code, bot, selected_complaint):
+#     user_id = message.from_user.id
+#     language_pack = kk if lang_code == 'kk' else ru
+#
+#     # Retrieve and store the selected time in Redis
+#     selected_time = message.text
+#     redis_client.set_value(f"user:{user_id}:call_time", selected_time)
+#
     # Confirm with the user and send the final message
-    bot.send_message(
-        message.chat.id,
-        language_pack['call_time_confirm'].format(time=selected_time),
-        reply_markup=types.ReplyKeyboardRemove()
-    )
+    # bot.send_message(
+    #     message.chat.id,
+    #     language_pack['call_time_confirm'].format(time=selected_time),
+    #     reply_markup=types.ReplyKeyboardRemove()
+    # )
 
     # Send the complete complaint message to the channel
-    channel_username = "-1002353491202"
+    channel_username = "-1002385224047"
     complaint_message = (
         f"Пользователь @{message.from_user.username} отправил контакт: {redis_client.get_value(f'user:{user_id}:contact')}. "
         f"Проблема: {selected_complaint}. "
-        f"Удобное время для звонка: {selected_time}."
+        # f"Удобное время для звонка: {selected_time}."
     )
-    bot.send_message(channel_username, complaint_message)
 
     # Update the decision status
     redis_client.set_value(f"user:{user_id}:decision", "sent")
+
+    bot.send_message(channel_username, complaint_message, reply_markup=types.ReplyKeyboardRemove())
