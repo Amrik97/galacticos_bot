@@ -65,7 +65,7 @@ def create_reply_markup(language_pack):
 
 
 #main page (choose language and welcome)
-@bot.message_handler(commands=['start', 'Заново', 'Басынан'])
+@bot.message_handler(commands=['/start', '/Заново', '/Басынан'])
 def handle_start(message):
     user_id = message.from_user.id
     start_buttons(bot, message, user_languages.get(user_id))
